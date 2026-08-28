@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>DeepResearch AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+<!-- =========================================
+     SIDEBAR
+========================================= -->
+
+<aside id="sidebar" class="sidebar">
+
+    <div class="sidebar-content">
+
+        <!-- BRAND -->
+
+        <div class="brand">
+
+            <div class="brand-logo">
+                ✦
+            </div>
+
+            <span>
+                DeepResearch AI
+            </span>
+
+        </div>
+
+
+        <!-- NEW RESEARCH -->
+
+        <button class="new-research"
+                onclick="newResearch()">
+
+            <span class="plus-icon">＋</span>
+
+            <span>
+                New research
+            </span>
+
+        </button>
+
+
+        <!-- SEARCH -->
+
+        <button class="sidebar-search">
+
+            <span>⌕</span>
+
+            <span>
+                Search research
+            </span>
+
+        </button>
+
+
+        <!-- RECENT -->
+
+        <div class="recent-section">
+
+            <div class="section-title">
+                Recent
+            </div>
+
+
+            <div class="recent-item">
+
+                <span class="recent-icon">
+                    ◇
+                </span>
+
+                <span>
+                    Generative AI productivity
+                </span>
+
+            </div>
+
+
+            <div class="recent-item">
+
+                <span class="recent-icon">
+                    ◇
+                </span>
+
+                <span>
+                    AI in education
+                </span>
+
+            </div>
+
+
+            <div class="recent-item">
+
+                <span class="recent-icon">
+                    ◇
+                </span>
+
+                <span>
+                    Future of AI
+                </span>
+
+            </div>
+
+
+            <div class="recent-item">
+
+                <span class="recent-icon">
+                    ◇
+                </span>
+
+                <span>
+                    Machine learning
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- SIDEBAR BOTTOM -->
+
+    <div class="sidebar-bottom">
+
+        <div class="sidebar-menu">
+
+            <span>⚙</span>
+
+            <span>
+                Settings
+            </span>
+
+        </div>
+
+
+        <div class="sidebar-menu">
+
+            <span>?</span>
+
+            <span>
+                Help
+            </span>
+
+        </div>
+
+
+        <div class="user-profile">
+
+            <div class="user-avatar">
+                MY
+            </div>
+
+            <div class="user-details">
+
+                <strong>
+                    Mahesh
+                </strong>
+
+                <small>
+                    DeepResearch AI
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</aside>
+
+
+
+<!-- =========================================
+     MAIN APPLICATION
+========================================= -->
+
+<main class="main">
+
+
+    <!-- TOP BAR -->
+
+    <header class="topbar">
+
+        <button id="menuButton"
+                class="menu-button"
+                onclick="toggleSidebar()">
+
+            ☰
+
+        </button>
+
+
+        <div class="mobile-brand">
+
+            <span>✦</span>
+
+            DeepResearch AI
+
+        </div>
+
+
+        <div class="topbar-right">
+
+            <button class="top-icon">
+                ⌕
+            </button>
+
+            <button class="top-icon">
+                ?
+            </button>
+
+
+            <div class="status">
+
+                <span class="status-dot"></span>
+
+                Ready
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================================
+         HOME SCREEN
+    ========================================= -->
+
+    <section id="home"
+             class="home">
+
+
+        <!-- HERO -->
+
+        <div class="hero">
+
+            <div class="hero-logo">
+                ✦
+            </div>
+
+
+            <h1>
+                What would you like to research?
+            </h1>
+
+
+            <p>
+                Ask a question and let DeepResearch AI
+                plan, research and organize the answer.
+            </p>
+
+        </div>
+
+
+
+        <!-- MAIN INPUT -->
+
+        <div class="research-box">
+
+
+            <textarea
+                id="researchTopic"
+                placeholder="Ask anything..."
+                rows="3"></textarea>
+
+
+            <div class="input-toolbar">
+
+
+                <div class="input-tools">
+
+                    <button
+                        class="tool-button"
+                        title="Attach file">
+
+                        ＋
+
+                    </button>
+
+
+                    <button
+                        class="tool-button active-tool"
+                        title="Web research">
+
+                        ◉ Web research
+
+                    </button>
+
+                </div>
+
+
+                <button
+                    class="send-button"
+                    onclick="startResearch()"
+                    title="Start research">
+
+                    ↑
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- QUICK ACTIONS -->
+
+        <div class="quick-actions">
+
+
+            <button
+                onclick="setTopic(
+                'How does Generative AI improve software developer productivity?'
+                )">
+
+                <span class="quick-icon">
+                    🔬
+                </span>
+
+                <div>
+
+                    <strong>
+                        Research a topic
+                    </strong>
+
+                    <small>
+                        Deep web research
+                    </small>
+
+                </div>
+
+            </button>
+
+
+
+            <button
+                onclick="setTopic(
+                'What is the impact of artificial intelligence on education?'
+                )">
+
+                <span class="quick-icon">
+                    📚
+                </span>
+
+                <div>
+
+                    <strong>
+                        Explore a subject
+                    </strong>
+
+                    <small>
+                        Find evidence and insights
+                    </small>
+
+                </div>
+
+            </button>
+
+
+
+            <button
+                onclick="setTopic(
+                'What are the latest trends in Generative AI?'
+                )">
+
+                <span class="quick-icon">
+                    ✨
+                </span>
+
+                <div>
+
+                    <strong>
+                        Discover trends
+                    </strong>
+
+                    <small>
+                        Analyze recent developments
+                    </small>
+
+                </div>
+
+            </button>
+
+        </div>
+
+
+        <div class="disclaimer">
+
+            DeepResearch AI can make mistakes.
+            Verify important information.
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         RESEARCH SCREEN
+    ========================================= -->
+
+    <section id="researchPage"
+             class="research-page hidden">
+
+
+        <!-- USER QUESTION -->
+
+        <div class="conversation-row user-row">
+
+            <div class="avatar user-avatar-small">
+                MY
+            </div>
+
+            <div class="message">
+
+                <div class="message-label">
+                    You
+                </div>
+
+                <div id="userQuestion"
+                     class="question-text">
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- AI -->
+
+        <div class="conversation-row">
+
+            <div class="avatar ai-avatar">
+                ✦
+            </div>
+
+
+            <div class="message ai-message-content">
+
+
+                <div class="message-label">
+                    DeepResearch AI
+                </div>
+
+
+                <div id="researchStatus"
+                     class="research-status">
+
+                    🧠 Creating research plan...
+
+                </div>
+
+
+
+                <!-- PLAN -->
+
+                <div id="planSection"
+                     class="result-section hidden">
+
+                    <h2>
+                        Research plan
+                    </h2>
+
+                    <div id="researchPlan">
+                    </div>
+
+                </div>
+
+
+
+                <!-- RESULTS -->
+
+                <div id="resultsSection"
+                     class="result-section hidden">
+
+                    <h2>
+                        Research findings
+                    </h2>
+
+                    <div id="researchResults">
+                    </div>
+
+                </div>
+
+
+
+                <!-- MCP -->
+
+                <div class="mcp-status">
+
+                    <span class="mcp-dot"></span>
+
+                    MCP research tools connected
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         BOTTOM RESEARCH INPUT
+    ========================================= -->
+
+    <div id="bottomInput"
+         class="bottom-input hidden">
+
+
+        <button class="bottom-plus">
+            ＋
+        </button>
+
+
+        <textarea
+            id="bottomResearchTopic"
+            placeholder="Ask another research question..."
+            rows="1"></textarea>
+
+
+        <button
+            class="bottom-send"
+            onclick="startResearchFromBottom()">
+
+            ↑
+
+        </button>
+
+    </div>
+
+
+
+</main>
+
+
+
+<script
+    src="{{ url_for('static', filename='script.js') }}">
+</script>
+
+
+</body>
+
+</html>
